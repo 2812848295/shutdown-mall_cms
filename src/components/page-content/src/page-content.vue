@@ -8,7 +8,7 @@
     >
       <template #headerHandler>
         <el-button v-if="isCreate" type="primary" size="medium" @click="handleNewData">
-          {{ contentConfig.newBtnTitle ?? '新建数据' }}
+          {{ contentConfig.newBtnTitle ?? "新建数据" }}
         </el-button>
       </template>
 
@@ -58,98 +58,98 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue'
-import { useStore } from '@/store'
-import { usePermission } from '@/hooks/usePermission'
+import { defineComponent, ref, watch, computed } from "vue";
+import { useStore } from "@/store";
+import { usePermission } from "@/hooks/usePermission";
 
-import HyTable from '@/base-ui/table'
+import HyTable from "@/base-ui/table";
 
 export default defineComponent({
   components: {
-    HyTable
+    HyTable,
   },
   props: {
     contentConfig: {
       type: Object,
-      required: true
+      required: true,
     },
     pageName: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  emits: ['newBtnClick', 'editBtnClick'],
+  emits: ["newBtnClick", "editBtnClick"],
   setup(props, { emit }) {
     // 7.按钮是否显示
-    const isCreate = usePermission(props.pageName, 'create')
-    const isDelete = usePermission(props.pageName, 'delete')
-    const isUpdate = usePermission(props.pageName, 'update')
-    const isQuery = usePermission(props.pageName, 'query')
+    const isCreate = usePermission(props.pageName, "create");
+    const isDelete = usePermission(props.pageName, "delete");
+    const isUpdate = usePermission(props.pageName, "update");
+    const isQuery = usePermission(props.pageName, "query");
 
     // 1.请求页面数据
-    const store = useStore()
+    const store = useStore();
 
     // 0.绑定pageInfo
     const pageInfo = ref({
       currentPage: 1,
-      pageSize: 10
-    })
-    watch(pageInfo, () => getPageData())
+      pageSize: 10,
+    });
+    watch(pageInfo, () => getPageData());
 
-    let otherQueryInfo = {}
+    let otherQueryInfo = {};
 
     // 2.获取数据
     const getPageData = (otherInfo: any = {}) => {
-      if (!isQuery) return
-      otherQueryInfo = otherInfo
-      store.dispatch('system/getPageListDataAction', {
+      if (!isQuery) return;
+      otherQueryInfo = otherInfo;
+      store.dispatch("system/getPageListDataAction", {
         pageName: props.pageName,
         queryInfo: {
           offset: (pageInfo.value.currentPage - 1) * pageInfo.value.pageSize,
           size: pageInfo.value.pageSize,
-          ...otherInfo
-        }
-      })
-    }
-    getPageData()
+          ...otherInfo,
+        },
+      });
+    };
+    getPageData();
 
     // 2.获取页面数据
-    const pageListData = computed(() => store.getters['system/pageListData'](props.pageName))
+    const pageListData = computed(() => store.getters["system/pageListData"](props.pageName));
 
     // 3.footer
-    const totalCount = computed(() => store.getters['system/pageListDataCount'](props.pageName))
+    const totalCount = computed(() => store.getters["system/pageListDataCount"](props.pageName));
 
     // 4.剩余需要的插槽
     const otherPropSlots = computed(() => {
       return props.contentConfig.propList.filter((item: any) => {
-        if (item.slotName === 'status') return false
-        else if (item.slotName === 'create') return false
-        else if (item.slotName === 'update') return false
-        else if (item.slotName === 'handler') return false
-        return true
-      })
-    })
+        if (item.slotName === "status") return false;
+        else if (item.slotName === "create") return false;
+        else if (item.slotName === "update") return false;
+        else if (item.slotName === "handler") return false;
+        return true;
+      });
+    });
 
     // 5.删除操作
     const handleDeleteClick = (rowItem: any) => {
-      store.dispatch('system/deletePageDataAction', {
+      store.dispatch("system/deletePageDataAction", {
         pageName: props.pageName,
         queryInfo: {
           offset: pageInfo.value.currentPage * pageInfo.value.pageSize,
           size: pageInfo.value.pageSize,
-          ...otherQueryInfo
+          ...otherQueryInfo,
         },
-        id: rowItem.id
-      })
-    }
+        id: rowItem.id,
+      });
+    };
 
     // 6.新建数据
     const handleNewData = () => {
-      emit('newBtnClick')
-    }
+      emit("newBtnClick");
+    };
     const handleEditClick = (item: any) => {
-      emit('editBtnClick', item)
-    }
+      emit("editBtnClick", item);
+    };
 
     return {
       pageInfo,
@@ -162,10 +162,10 @@ export default defineComponent({
       handleNewData,
       isCreate,
       isUpdate,
-      isDelete
-    }
-  }
-})
+      isDelete,
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">

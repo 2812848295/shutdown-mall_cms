@@ -20,76 +20,76 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch } from "vue";
 
-import { useStore } from '@/store'
+import { useStore } from "@/store";
 
-import HyForm from '@/base-ui/form'
+import HyForm from "@/base-ui/form";
 
 export default defineComponent({
   components: {
-    HyForm
+    HyForm,
   },
   props: {
     modalConfig: {
       type: Object,
-      required: true
+      required: true,
     },
     defaultInfo: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     otherInfo: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     pageName: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     // 1.绑定属性
-    const store = useStore()
-    const originFormData: any = {}
-    const formData = ref({ ...originFormData })
+    const store = useStore();
+    const originFormData: any = {};
+    const formData = ref({ ...originFormData });
 
     watch(
       () => props.defaultInfo,
       (newValue) => {
         for (const item of props.modalConfig.formItems) {
-          formData.value[`${item.field}`] = newValue[`${item.field}`]
+          formData.value[`${item.field}`] = newValue[`${item.field}`];
         }
-      }
-    )
+      },
+    );
 
     // 2.内部处理
-    const dialogVisible = ref(false)
+    const dialogVisible = ref(false);
     const handleConfirmClick = () => {
-      dialogVisible.value = false
+      dialogVisible.value = false;
       if (Object.keys(props.defaultInfo).length) {
         // 编辑
-        store.dispatch('system/editPageDataAction', {
+        store.dispatch("system/editPageDataAction", {
           pageName: props.pageName,
           queryInfo: { ...formData.value, ...props.otherInfo },
-          id: props.defaultInfo.id
-        })
+          id: props.defaultInfo.id,
+        });
       } else {
         // 新建
-        store.dispatch('system/newPageDataAction', {
+        store.dispatch("system/newPageDataAction", {
           pageName: props.pageName,
-          queryInfo: { ...formData.value, ...props.otherInfo }
-        })
+          queryInfo: { ...formData.value, ...props.otherInfo },
+        });
       }
-    }
+    };
 
     return {
       formData,
       dialogVisible,
-      handleConfirmClick
-    }
-  }
-})
+      handleConfirmClick,
+    };
+  },
+});
 </script>
 
 <style scoped></style>

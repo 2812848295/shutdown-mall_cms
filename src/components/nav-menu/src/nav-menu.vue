@@ -2,7 +2,7 @@
   <div class="nav-menu">
     <div class="logo">
       <img class="img" src="~@/assets/img/logo.svg" alt="logo" />
-      <span v-show="!collapse" class="title">Coderwhy-CMS</span>
+      <span v-show="!collapse" class="title">shutdown-CMS</span>
     </div>
     <el-menu
       :default-active="currentItemId"
@@ -40,43 +40,43 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType, ref } from "vue";
 
-import { useStore } from '@/store'
-import { useRouter, useRoute } from 'vue-router'
-import { pathMapToMenu } from '@/utils/map-menu'
+import { useStore } from "@/store";
+import { useRouter, useRoute } from "vue-router";
+import { pathMapToMenu } from "@/utils/map-menu";
 
 export default defineComponent({
   props: {
     collapse: {
       type: Boolean as PropType<boolean>,
-      default: false
-    }
+      default: false,
+    },
   },
   setup() {
     // 1.获取menus
-    const store = useStore()
-    const menus = store.state.login.userMenus
+    const store = useStore();
+    const menus = store.state.login.userMenus;
 
     // 2.记录选中的index
-    const router = useRouter()
-    const route = useRoute()
-    const menu = pathMapToMenu(menus, route.path)
-    const currentItemId = ref<string>(menu.id + '')
+    const router = useRouter();
+    const route = useRoute();
+    const menu = pathMapToMenu(menus, route.path);
+    const currentItemId = ref<string>(menu.id + "");
     const handleItemClick = (item: any) => {
-      currentItemId.value = item.id + ''
+      currentItemId.value = item.id + "";
       router.push({
-        path: item.url ?? '/not-found'
-      })
-    }
+        path: item.url ?? "/not-found",
+      });
+    };
 
     return {
       menus,
       currentItemId,
-      handleItemClick
-    }
-  }
-})
+      handleItemClick,
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">

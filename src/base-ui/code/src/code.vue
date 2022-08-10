@@ -7,33 +7,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watchEffect } from 'vue'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/github.css'
+import { defineComponent, ref, watchEffect } from "vue";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
 export default defineComponent({
   props: {
     language: {
       type: String,
-      default: 'html'
+      default: "html",
     },
     code: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
 
   setup(props) {
-    const highlightedCode = ref<string>('')
+    const highlightedCode = ref<string>("");
 
     watchEffect(() => {
-      highlightedCode.value = hljs.highlight(props.code, { language: props.language }).value
-    })
+      highlightedCode.value = hljs.highlight(props.code, { language: props.language }).value;
+    });
 
     return {
-      highlightedCode
-    }
-  }
-})
+      highlightedCode,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

@@ -5,21 +5,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import HyEditor from '@/base-ui/editor'
+import { defineComponent, ref } from "vue";
+import HyEditor from "@/base-ui/editor";
 
 export default defineComponent({
-  name: 'chat',
+  name: "chat",
   components: {
-    HyEditor
+    HyEditor,
   },
   setup() {
-    const htmlString = ref<string>('coderwhy')
+    const htmlString = ref<string>("coderwhy");
     return {
-      htmlString
-    }
-  }
-})
+      htmlString,
+    };
+  },
+});
 </script>
 
 <style scoped></style>

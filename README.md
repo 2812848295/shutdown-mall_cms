@@ -1,4 +1,4 @@
-# hy-vue3-ts-cms
+# typ_backstage
 
 ## Project setup
 

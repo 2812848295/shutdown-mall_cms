@@ -14,57 +14,57 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType, ref } from "vue";
 
-import HyForm, { IForm } from '@/base-ui/form'
+import HyForm, { IForm } from "@/base-ui/form";
 
 interface IFormData {
-  [key: string]: any
+  [key: string]: any;
 }
 
 export default defineComponent({
   components: {
-    HyForm
+    HyForm,
   },
   props: {
     searchConfig: {
       type: Object as PropType<IForm>,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      default: '高级检索'
-    }
+      default: "高级检索",
+    },
   },
-  emits: ['queryBtnClick', 'resetBtnClick'],
+  emits: ["queryBtnClick", "resetBtnClick"],
   setup(props, { emit }) {
-    const originFormData: IFormData = {}
-    const formItems = props.searchConfig.formItems ?? []
+    const originFormData: IFormData = {};
+    const formItems = props.searchConfig.formItems ?? [];
     for (const formItem of formItems) {
-      originFormData[`${formItem.field}`] = ''
+      originFormData[`${formItem.field}`] = "";
     }
 
-    const formData = ref<IFormData>({ ...originFormData })
+    const formData = ref<IFormData>({ ...originFormData });
 
     const handleResetClick = () => {
       for (const key in originFormData) {
-        formData.value[`${key}`] = originFormData[key]
+        formData.value[`${key}`] = originFormData[key];
       }
-      emit('resetBtnClick')
-    }
+      emit("resetBtnClick");
+    };
 
     const handleQueryClick = () => {
-      console.log({ ...formData.value })
-      emit('queryBtnClick', formData.value)
-    }
+      console.log({ ...formData.value });
+      emit("queryBtnClick", formData.value);
+    };
 
     return {
       formData,
       handleResetClick,
-      handleQueryClick
-    }
-  }
-})
+      handleQueryClick,
+    };
+  },
+});
 </script>
 
 <style scoped>

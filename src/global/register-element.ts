@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import { App } from "vue";
 import {
   ElButton,
   ElTabs,
@@ -10,7 +10,7 @@ import {
   ElLink,
   ElMenu,
   ElMenuItem,
-  ElSubmenu,
+  ElSubMenu,
   ElContainer,
   ElAside,
   ElHeader,
@@ -38,10 +38,10 @@ import {
   ElDescriptionsItem,
   ElTag,
   ElCard,
-  ElTooltip
-} from 'element-plus'
-import 'element-plus/lib/theme-chalk/base.css'
+  ElTooltip,
+} from "element-plus/lib/index";
 
+import "element-plus/dist/index.css";
 const components = [
   ElButton,
   ElTabs,
@@ -52,7 +52,7 @@ const components = [
   ElCheckbox,
   ElLink,
   ElMenu,
-  ElSubmenu,
+  ElSubMenu,
   ElMenuItem,
   ElContainer,
   ElAside,
@@ -81,13 +81,13 @@ const components = [
   ElDescriptionsItem,
   ElTag,
   ElCard,
-  ElTooltip
-]
+  ElTooltip,
+];
 
 function registerElement(app: App): void {
   for (const cpn of components) {
-    app.component(cpn.name, cpn)
+    app.component(cpn.name, cpn);
   }
 }
 
-export default registerElement
+export default registerElement;

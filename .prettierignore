@@ -1,3 +1,4 @@
+# 忽略格式化文件
 /dist/*
 .local
 .output.js

@@ -10,20 +10,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { Account } from '../types'
+import { defineComponent, PropType } from "vue";
+import { Account } from "../types";
 
 export default defineComponent({
   props: {
     account: {
       type: Object as PropType<Account>,
-      default: () => ({ name: '', password: '' })
-    }
+      default: () => ({ name: "", password: "" }),
+    },
   },
   setup() {
-    return {}
-  }
-})
+    return {};
+  },
+});
 </script>
 
 <style scoped></style>

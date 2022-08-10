@@ -45,15 +45,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useStore } from '@/store'
+import { defineComponent, computed } from "vue";
+import { useStore } from "@/store";
 
-import StatisticalPanel from '@/components/statistical-panel'
-import HyCard from '@/base-ui/card'
-import { PieEchart, MapEchart, RoseEchart, LineEchart, BarEchart } from '@/components/page-charts'
+import StatisticalPanel from "@/components/statistical-panel";
+import HyCard from "@/base-ui/card";
+import { PieEchart, MapEchart, RoseEchart, LineEchart, BarEchart } from "@/components/page-charts";
 
 export default defineComponent({
-  name: 'dashboard',
+  name: "dashboard",
   components: {
     HyCard,
     StatisticalPanel,
@@ -61,50 +61,50 @@ export default defineComponent({
     MapEchart,
     RoseEchart,
     LineEchart,
-    BarEchart
+    BarEchart,
   },
   setup() {
     // 1.发起数据统计的网络请求
-    const store = useStore()
-    store.dispatch('analysis/getAnalysisDataAction')
+    const store = useStore();
+    store.dispatch("analysis/getAnalysisDataAction");
 
     // 2.获取顶部PanelData
-    const topPanelData = computed(() => store.state.analysis.topPanelDatas)
+    const topPanelData = computed(() => store.state.analysis.topPanelDatas);
     const categoryGoodsCount = computed(() => {
       return store.state.analysis.categoryGoodsCount.map((item: any) => {
-        return { value: item.goodsCount, name: item.name }
-      })
-    })
+        return { value: item.goodsCount, name: item.name };
+      });
+    });
     const goodsSaleTop10 = computed(() => {
       return store.state.analysis.goodsSaleTop10.map((item: any) => {
-        return { value: item.saleCount, name: item.name }
-      })
-    })
+        return { value: item.saleCount, name: item.name };
+      });
+    });
     const categoryGoodsSale = computed(() => {
-      const goodsSale = store.state.analysis.categoryGoodsSale
-      const labels: string[] = []
-      const values: any[] = []
+      const goodsSale = store.state.analysis.categoryGoodsSale;
+      const labels: string[] = [];
+      const values: any[] = [];
       for (const item of goodsSale) {
-        labels.push(item.name)
-        values.push(item.goodsCount)
+        labels.push(item.name);
+        values.push(item.goodsCount);
       }
-      return { labels, values }
-    })
+      return { labels, values };
+    });
     const addressGoodsSale = computed(() => {
       return store.state.analysis.goodsAddressSale.map((item: any) => {
-        return { name: item.address, value: item.count }
-      })
-    })
+        return { name: item.address, value: item.count };
+      });
+    });
 
     return {
       topPanelData,
       categoryGoodsCount,
       goodsSaleTop10,
       categoryGoodsSale,
-      addressGoodsSale
-    }
-  }
-})
+      addressGoodsSale,
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">

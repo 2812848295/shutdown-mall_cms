@@ -19,28 +19,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import NavMenu from '@/components/nav-menu'
-import NavHeader from '@/components/nav-header'
+import { defineComponent, ref } from "vue";
+import NavMenu from "@/components/nav-menu";
+import NavHeader from "@/components/nav-header";
 
 export default defineComponent({
   components: {
     NavMenu,
-    NavHeader
+    NavHeader,
   },
   setup() {
     // 1.保存是否当前处于折叠状态
-    const isCollapse = ref(false)
+    const isCollapse = ref(false);
     const foldChange = (isFold: boolean) => {
-      isCollapse.value = isFold
-    }
+      isCollapse.value = isFold;
+    };
 
     return {
       isCollapse,
-      foldChange
-    }
-  }
-})
+      foldChange,
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">

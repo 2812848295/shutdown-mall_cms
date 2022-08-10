@@ -1,2 +1,2 @@
-import HyTextLink from './src/textlink.vue'
-export default HyTextLink
+import HyTextLink from "./src/textlink.vue";
+export default HyTextLink;

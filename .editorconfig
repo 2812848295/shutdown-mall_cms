@@ -1,4 +1,6 @@
 # http://editorconfig.org
+# 这个文件是配置 帮助开发者在不同的编辑器和IDE 之间定义和维护一致的代码风格。
+# 商店安装 EditorConfig for VS Code
 
 root = true
 

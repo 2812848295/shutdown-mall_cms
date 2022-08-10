@@ -7,19 +7,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
 
+import eu from "element-plus/lib/locale/lang/eu";
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {},
   setup() {
     return {
-      zhCn
-    }
-  }
-})
+      zhCn,
+      eu,
+    };
+  },
+});
 </script>
 
 <style lang="less">

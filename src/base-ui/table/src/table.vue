@@ -51,72 +51,72 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   props: {
     title: {
       type: String,
-      default: '表格数据'
+      default: "表格数据",
     },
     showIndexColumn: {
       type: Boolean,
-      default: true
+      default: true,
     },
     showSelectColumn: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showFooter: {
       type: Boolean,
-      default: true
+      default: true,
     },
     listData: {
       type: Array as PropType<any[]>,
-      default: () => []
+      default: () => [],
     },
     propList: {
       type: Array as PropType<any[]>,
-      default: () => []
+      default: () => [],
     },
     childrenProps: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     totalCount: {
       type: Number,
-      default: 0
+      default: 0,
     },
     page: {
       type: Object,
       default: () => ({
         currentPage: 0,
-        pageSize: 10
-      })
-    }
+        pageSize: 10,
+      }),
+    },
   },
-  emits: ['selectionChange', 'update:page'],
+  emits: ["selectionChange", "update:page"],
   setup(props, { emit }) {
     const selectionChange = (value: any) => {
       if (props.showSelectColumn) {
-        emit('selectionChange', value)
+        emit("selectionChange", value);
       }
-    }
+    };
 
     const handleCurrentChange = (currentPage: number) => {
-      emit('update:page', { ...props.page, currentPage })
-    }
+      emit("update:page", { ...props.page, currentPage });
+    };
     const handleSizeChange = (pageSize: number) => {
-      emit('update:page', { ...props.page, pageSize })
-    }
+      emit("update:page", { ...props.page, pageSize });
+    };
 
     return {
       selectionChange,
       handleCurrentChange,
-      handleSizeChange
-    }
-  }
-})
+      handleSizeChange,
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">

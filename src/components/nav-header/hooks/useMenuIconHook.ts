@@ -1,15 +1,15 @@
-import { ref, SetupContext } from 'vue'
+import { ref, SetupContext } from "vue";
 
 interface UseMenuIconProps {
-  emit: SetupContext<['foldChange']>['emit']
+  emit: SetupContext<["foldChange"]>["emit"];
 }
 
 export default function useMenuIcon({ emit }: UseMenuIconProps) {
-  const isFold = ref(false)
+  const isFold = ref(false);
   const handleFoldClick = () => {
-    isFold.value = !isFold.value
-    emit('foldChange', isFold.value)
-  }
+    isFold.value = !isFold.value;
+    emit("foldChange", isFold.value);
+  };
 
-  return [isFold, handleFoldClick]
+  return [isFold, handleFoldClick];
 }

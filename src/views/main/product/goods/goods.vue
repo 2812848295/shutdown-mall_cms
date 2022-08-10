@@ -19,33 +19,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import PageSearch from '@/components/page-search'
-import PageContent from '@/components/page-content'
+import { defineComponent } from "vue";
+import PageSearch from "@/components/page-search";
+import PageContent from "@/components/page-content";
 
-import { usePageSearch } from '@/hooks/usePageSearch'
+import { usePageSearch } from "@/hooks/usePageSearch";
 
-import { searchFormConfig } from './config/search.config'
-import { contentTableConfig } from './config/content.config'
+import { searchFormConfig } from "./config/search.config";
+import { contentTableConfig } from "./config/content.config";
 
 export default defineComponent({
-  name: 'goods',
+  name: "goods",
   components: {
     PageSearch,
-    PageContent
+    PageContent,
   },
   setup() {
-    const [pageContentRef, handleQueryClick, handleResetClick] = usePageSearch()
+    const [pageContentRef, handleQueryClick, handleResetClick] = usePageSearch();
 
     return {
       searchFormConfig,
       contentTableConfig,
       pageContentRef,
       handleQueryClick,
-      handleResetClick
-    }
-  }
-})
+      handleResetClick,
+    };
+  },
+});
 </script>
 
 <style scoped></style>
