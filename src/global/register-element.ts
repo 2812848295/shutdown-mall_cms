@@ -39,6 +39,7 @@ import {
   ElTag,
   ElCard,
   ElTooltip,
+  ElIcon,
 } from "element-plus/lib/index";
 
 import "element-plus/dist/index.css";
@@ -82,6 +83,7 @@ const components = [
   ElTag,
   ElCard,
   ElTooltip,
+  ElIcon,
 ];
 
 function registerElement(app: App): void {

@@ -15,9 +15,11 @@
       <template v-for="item in menus" :key="item.id">
         <!-- 判断二级菜单 -->
         <template v-if="item.children && item.children.length">
-          <el-submenu :index="item.id + ''">
+          <el-sub-menu :index="item.id + ''">
             <template #title>
-              <i :class="item.icon"></i>
+              <el-icon>
+                <component :is="filterIcons(item.icon)"></component>
+              </el-icon>
               <span>{{ item.name }}</span>
             </template>
             <template v-for="subitem in item.children" :key="subitem.id">
@@ -26,7 +28,7 @@
                 <span>{{ subitem.name }}</span>
               </el-menu-item>
             </template>
-          </el-submenu>
+          </el-sub-menu>
         </template>
         <template v-else>
           <el-menu-item :index="item.id + ''" @click="handleItemClick(item)">
@@ -57,7 +59,6 @@ export default defineComponent({
     // 1.获取menus
     const store = useStore();
     const menus = store.state.login.userMenus;
-
     // 2.记录选中的index
     const router = useRouter();
     const route = useRoute();
@@ -69,11 +70,25 @@ export default defineComponent({
         path: item.url ?? "/not-found",
       });
     };
+    //过滤icon
+    const filterIcons = (icon: string) => {
+      switch (icon) {
+        case "el-icon-monitor":
+          return "Monitor";
+        case "el-icon-setting":
+          return "Setting";
+        case "el-icon-goods":
+          return "Goods";
+        case "el-icon-chat-line-round":
+          return "ChatLineRound";
+      }
+    };
 
     return {
       menus,
       currentItemId,
       handleItemClick,
+      filterIcons,
     };
   },
 });
@@ -105,8 +120,9 @@ export default defineComponent({
   }
 
   // 目录
-  .el-submenu {
+  .el-sub-menu {
     background-color: #001529 !important;
+
     // 二级菜单 ( 默认背景 )
     .el-menu-item {
       padding-left: 50px !important;

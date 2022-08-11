@@ -7,13 +7,13 @@
       v-model:page="pageInfo"
     >
       <template #headerHandler>
-        <el-button v-if="isCreate" type="primary" size="medium" @click="handleNewData">
+        <el-button v-if="isCreate" type="primary" size="default" @click="handleNewData">
           {{ contentConfig.newBtnTitle ?? "新建数据" }}
         </el-button>
       </template>
 
       <template #status="scope">
-        <el-button :type="scope.row.enable ? 'success' : 'danger'" size="mini" plain>
+        <el-button :type="scope.row.enable ? 'success' : 'danger'" size="small" plain>
           {{ $filters.showStatus(scope.row.enable) }}
         </el-button>
       </template>
@@ -27,18 +27,20 @@
         <div class="handler">
           <el-button
             v-if="isUpdate"
-            type="text"
-            icon="el-icon-edit"
-            size="mini"
+            type="primary"
+            icon="EditPen"
+            size="small"
+            link
             @click="handleEditClick(scope.row)"
           >
             编辑
           </el-button>
           <el-button
             v-if="isDelete"
-            type="text"
-            icon="el-icon-delete"
-            size="mini"
+            type="primary"
+            link
+            icon="DeleteFilled"
+            size="small"
             @click="handleDeleteClick(scope.row)"
           >
             删除
@@ -85,7 +87,6 @@ export default defineComponent({
     const isDelete = usePermission(props.pageName, "delete");
     const isUpdate = usePermission(props.pageName, "update");
     const isQuery = usePermission(props.pageName, "query");
-
     // 1.请求页面数据
     const store = useStore();
 

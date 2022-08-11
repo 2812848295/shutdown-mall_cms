@@ -4,9 +4,9 @@
       <el-dropdown>
         <span class="el-dropdown-link">
           <el-avatar
-            size="medium"
+            size="default"
             class="avatar"
-            src="https://upload.jianshu.io/users/upload_avatars/1102036/c3628b478f06.jpeg"
+            :src="require('@/assets/img/avatar.jpg')"
           ></el-avatar>
           <span class="name">{{ name }}</span>
         </span>
@@ -22,11 +22,15 @@
       </el-dropdown>
     </div>
     <div class="operation">
-      <span><i class="el-icon-bell"></i></span>
-      <span><i class="el-icon-chat-dot-round"></i></span>
+      <span
+        ><el-icon :size="20"><Bell /></el-icon
+      ></span>
+      <span>
+        <el-icon :size="20"><ChatDotRound /></el-icon
+      ></span>
       <span>
         <span class="dot"></span>
-        <i class="el-icon-postcard"></i>
+        <el-icon :size="20"><Postcard /></el-icon>
       </span>
     </div>
   </div>
@@ -89,7 +93,6 @@ Number("123");
       width: 40px;
       height: 35px;
       line-height: 35px;
-
       &:hover {
         background: #f2f2f2;
       }

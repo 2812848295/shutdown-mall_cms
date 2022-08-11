@@ -3,8 +3,8 @@
     <hy-form v-bind="searchConfig" v-model="formData">
       <template #footer>
         <div class="btns">
-          <el-button size="medium" icon="el-icon-refresh" @click="handleResetClick">重置</el-button>
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="handleQueryClick"
+          <el-button size="default" icon="Refresh" @click="handleResetClick">重置</el-button>
+          <el-button type="primary" size="default" icon="Search" @click="handleQueryClick"
             >查询</el-button
           >
         </div>

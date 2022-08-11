@@ -58,6 +58,7 @@ const login: Module<ILoginState, IRootState> = {
       // 3.用户菜单树
       const userMenus = await getUserMenus(userInfo.role.id);
       console.log(userMenus);
+      //过滤icon
       commit("saveUserMenus", userMenus);
       localCache.setCache("userMenus", userMenus);
 
