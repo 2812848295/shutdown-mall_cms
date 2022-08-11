@@ -24,45 +24,45 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue";
-import localCache from "@/utils/cache";
+import { defineComponent, reactive, ref } from 'vue'
+import localCache from '@/utils/cache'
 
-import LoginAccount from "./login-account.vue";
-import LoginPhone from "./login-phone.vue";
+import LoginAccount from './login-account.vue'
+import LoginPhone from './login-phone.vue'
 
 export default defineComponent({
   components: {
     LoginAccount,
-    LoginPhone,
+    LoginPhone
   },
   setup() {
-    const currentTab = ref("account");
-    const isKeep = ref(true);
+    const currentTab = ref('account')
+    const isKeep = ref(true)
 
-    const cacheName = localCache.getCache("name") ?? "";
-    const cachePassword = localCache.getCache("password") ?? "";
+    const cacheName = localCache.getCache('name') ?? ''
+    const cachePassword = localCache.getCache('password') ?? ''
 
     const account = reactive({
       name: cacheName,
-      password: cachePassword,
-    });
-    const accountRef = ref<InstanceType<typeof LoginAccount>>();
+      password: cachePassword
+    })
+    const accountRef = ref<InstanceType<typeof LoginAccount>>()
 
     const loginAction = () => {
-      if (currentTab.value === "account") {
-        accountRef.value?.accountLoginAction(isKeep.value);
+      if (currentTab.value === 'account') {
+        accountRef.value?.accountLoginAction(isKeep.value)
       }
-    };
+    }
 
     return {
       currentTab,
       account,
       isKeep,
       loginAction,
-      accountRef,
-    };
-  },
-});
+      accountRef
+    }
+  }
+})
 </script>
 
 <style lang="less" scoped>

@@ -1,2 +1,2 @@
-import HyCode from "./src/code.vue";
-export default HyCode;
+import HyCode from './src/code.vue'
+export default HyCode

@@ -1,26 +1,26 @@
-import { ref } from "vue";
-import PageModal from "@/components/page-modal";
+import { ref } from 'vue'
+import PageModal from '@/components/page-modal'
 
-type CallbackFn = (item?: any) => void;
+type CallbackFn = (item?: any) => void
 
 export const usePageModal = (newHandleCallback?: CallbackFn, editHandleCallback?: CallbackFn) => {
-  const modalInfo = ref({});
-  const pageModalRef = ref<InstanceType<typeof PageModal>>();
+  const modalInfo = ref({})
+  const pageModalRef = ref<InstanceType<typeof PageModal>>()
   const handleNewData = () => {
-    modalInfo.value = {};
+    modalInfo.value = {}
     if (pageModalRef.value) {
-      pageModalRef.value.dialogVisible = true;
+      pageModalRef.value.dialogVisible = true
     }
-    newHandleCallback && newHandleCallback();
-  };
+    newHandleCallback && newHandleCallback()
+  }
 
   const handleEditData = (item: any) => {
-    modalInfo.value = { ...item };
+    modalInfo.value = { ...item }
     if (pageModalRef.value) {
-      pageModalRef.value.dialogVisible = true;
+      pageModalRef.value.dialogVisible = true
     }
-    editHandleCallback && editHandleCallback(item);
-  };
+    editHandleCallback && editHandleCallback(item)
+  }
 
-  return [modalInfo, pageModalRef, handleNewData, handleEditData];
-};
+  return [modalInfo, pageModalRef, handleNewData, handleEditData]
+}

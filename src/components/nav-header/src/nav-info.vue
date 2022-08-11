@@ -37,32 +37,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useStore } from "@/store/index";
-import { useRouter } from "vue-router";
+import { defineComponent, computed } from 'vue'
+import { useStore } from '@/store/index'
+import { useRouter } from 'vue-router'
 
-import localCache from "@/utils/cache";
+import localCache from '@/utils/cache'
 
 export default defineComponent({
   setup() {
-    const store = useStore();
-    const name = computed(() => store.state.login.userInfo.name);
+    const store = useStore()
+    const name = computed(() => store.state.login.userInfo.name)
 
-    const router = useRouter();
+    const router = useRouter()
 
     const handleExitClick = () => {
-      localCache.deleteCache("token");
-      router.push("/main");
-    };
+      localCache.deleteCache('token')
+      router.push('/main')
+    }
 
     return {
       name,
-      handleExitClick,
-    };
-  },
-});
+      handleExitClick
+    }
+  }
+})
 
-Number("123");
+Number('123')
 </script>
 
 <style scoped lang="less">

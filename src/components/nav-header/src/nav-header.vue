@@ -14,41 +14,41 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useRoute } from "vue-router";
-import { useStore } from "@/store";
+import { defineComponent, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useStore } from '@/store'
 
-import { pathMapBreadcrumbs } from "@/utils/map-menu";
+import { pathMapBreadcrumbs } from '@/utils/map-menu'
 
-import NavInfo from "./nav-info.vue";
-import HyBreadcrumb from "@/base-ui/breadcrumb";
+import NavInfo from './nav-info.vue'
+import HyBreadcrumb from '@/base-ui/breadcrumb'
 
-import useMenuIcon from "../hooks/useMenuIconHook";
+import useMenuIcon from '../hooks/useMenuIconHook'
 
 export default defineComponent({
   components: {
     NavInfo,
-    HyBreadcrumb,
+    HyBreadcrumb
   },
-  emits: ["foldChange"],
+  emits: ['foldChange'],
   setup(props, ctx) {
     // 1.菜单icon
-    const [isFold, handleFoldClick] = useMenuIcon({ emit: ctx.emit });
+    const [isFold, handleFoldClick] = useMenuIcon({ emit: ctx.emit })
 
     // 2.获取菜单列表
     const breadcrumbs = computed(() => {
-      const path = useRoute().path;
-      const userMenus = useStore().state.login.userMenus;
-      return pathMapBreadcrumbs(userMenus, path);
-    });
+      const path = useRoute().path
+      const userMenus = useStore().state.login.userMenus
+      return pathMapBreadcrumbs(userMenus, path)
+    })
 
     return {
       isFold,
       breadcrumbs,
-      handleFoldClick,
-    };
-  },
-});
+      handleFoldClick
+    }
+  }
+})
 </script>
 
 <style scoped lang="less">

@@ -1,4 +1,4 @@
-import { App } from "vue";
+import { App } from 'vue'
 import {
   ElButton,
   ElTabs,
@@ -39,10 +39,10 @@ import {
   ElTag,
   ElCard,
   ElTooltip,
-  ElIcon,
-} from "element-plus/lib/index";
+  ElIcon
+} from 'element-plus/lib/index'
 
-import "element-plus/dist/index.css";
+import 'element-plus/dist/index.css'
 const components = [
   ElButton,
   ElTabs,
@@ -83,13 +83,13 @@ const components = [
   ElTag,
   ElCard,
   ElTooltip,
-  ElIcon,
-];
+  ElIcon
+]
 
 function registerElement(app: App): void {
   for (const cpn of components) {
-    app.component(cpn.name, cpn);
+    app.component(cpn.name, cpn)
   }
 }
 
-export default registerElement;
+export default registerElement

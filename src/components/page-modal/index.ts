@@ -1,3 +1,3 @@
-import PageModal from "./src/page-modal.vue";
+import PageModal from './src/page-modal.vue'
 
-export default PageModal;
+export default PageModal

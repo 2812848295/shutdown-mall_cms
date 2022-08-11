@@ -5,23 +5,23 @@ module.exports = {
   // publicPath: './',
   devServer: {
     proxy: {
-      "/api": {
-        target: "http://152.136.185.210:4000/",
+      '/api': {
+        target: 'http://152.136.185.210:4000/',
         pathRewrite: {
-          "^/api": "",
+          '^/api': ''
         },
         ws: true,
-        changeOrigin: true,
-      },
-    },
+        changeOrigin: true
+      }
+    }
   },
   configureWebpack: {
     resolve: {
       alias: {
-        views: "@/views",
-      },
-    },
-  },
+        views: '@/views'
+      }
+    }
+  }
   // configureWebpack: (config) => {
   //   config.resolve.alias = {
   //     '@': path.resolve(__dirname, 'src'),
@@ -31,4 +31,4 @@ module.exports = {
   // chainWebpack: (config) => {
   //   config.resolve.alias.set('@', path.resolve(__dirname, 'src')).set('views', '@/views')
   // }
-};
+}

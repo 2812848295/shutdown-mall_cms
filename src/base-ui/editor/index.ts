@@ -1,3 +1,3 @@
-import HyEditor from "./src/index.vue";
+import HyEditor from './src/index.vue'
 
-export default HyEditor;
+export default HyEditor

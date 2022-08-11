@@ -42,56 +42,56 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
+import { defineComponent, PropType, ref } from 'vue'
 
-import { useStore } from "@/store";
-import { useRouter, useRoute } from "vue-router";
-import { pathMapToMenu } from "@/utils/map-menu";
+import { useStore } from '@/store'
+import { useRouter, useRoute } from 'vue-router'
+import { pathMapToMenu } from '@/utils/map-menu'
 
 export default defineComponent({
   props: {
     collapse: {
       type: Boolean as PropType<boolean>,
-      default: false,
-    },
+      default: false
+    }
   },
   setup() {
     // 1.获取menus
-    const store = useStore();
-    const menus = store.state.login.userMenus;
+    const store = useStore()
+    const menus = store.state.login.userMenus
     // 2.记录选中的index
-    const router = useRouter();
-    const route = useRoute();
-    const menu = pathMapToMenu(menus, route.path);
-    const currentItemId = ref<string>(menu.id + "");
+    const router = useRouter()
+    const route = useRoute()
+    const menu = pathMapToMenu(menus, route.path)
+    const currentItemId = ref<string>(menu.id + '')
     const handleItemClick = (item: any) => {
-      currentItemId.value = item.id + "";
+      currentItemId.value = item.id + ''
       router.push({
-        path: item.url ?? "/not-found",
-      });
-    };
+        path: item.url ?? '/not-found'
+      })
+    }
     //过滤icon
     const filterIcons = (icon: string) => {
       switch (icon) {
-        case "el-icon-monitor":
-          return "Monitor";
-        case "el-icon-setting":
-          return "Setting";
-        case "el-icon-goods":
-          return "Goods";
-        case "el-icon-chat-line-round":
-          return "ChatLineRound";
+        case 'el-icon-monitor':
+          return 'Monitor'
+        case 'el-icon-setting':
+          return 'Setting'
+        case 'el-icon-goods':
+          return 'Goods'
+        case 'el-icon-chat-line-round':
+          return 'ChatLineRound'
       }
-    };
+    }
 
     return {
       menus,
       currentItemId,
       handleItemClick,
-      filterIcons,
-    };
-  },
-});
+      filterIcons
+    }
+  }
+})
 </script>
 
 <style scoped lang="less">

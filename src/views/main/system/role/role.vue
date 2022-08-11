@@ -35,61 +35,61 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, nextTick } from "vue";
-import { useStore } from "@/store";
+import { defineComponent, computed, ref, nextTick } from 'vue'
+import { useStore } from '@/store'
 
-import { getMenuChecks } from "@/utils/map-menu";
+import { getMenuChecks } from '@/utils/map-menu'
 
-import { ElTree } from "element-plus";
-import PageSearch from "@/components/page-search";
-import PageContent from "@/components/page-content";
-import PageModal from "@/components/page-modal";
+import { ElTree } from 'element-plus'
+import PageSearch from '@/components/page-search'
+import PageContent from '@/components/page-content'
+import PageModal from '@/components/page-modal'
 
-import { usePageSearch } from "@/hooks/usePageSearch";
-import { usePageModal } from "@/hooks/usePageModal";
+import { usePageSearch } from '@/hooks/usePageSearch'
+import { usePageModal } from '@/hooks/usePageModal'
 
-import { searchFormConfig } from "./config/search.config";
-import { contentTableConfig } from "./config/content.config";
-import { modalConfig } from "./config/modal.config";
+import { searchFormConfig } from './config/search.config'
+import { contentTableConfig } from './config/content.config'
+import { modalConfig } from './config/modal.config'
 
 export default defineComponent({
-  name: "role",
+  name: 'role',
   components: {
     PageSearch,
     PageContent,
-    PageModal,
+    PageModal
   },
   setup() {
     // pageSearch处理hook
-    const [pageContentRef, handleQueryClick, handleResetClick] = usePageSearch();
+    const [pageContentRef, handleQueryClick, handleResetClick] = usePageSearch()
 
     // ElTree的处理逻辑
-    const elTreeRef = ref<InstanceType<typeof ElTree>>();
+    const elTreeRef = ref<InstanceType<typeof ElTree>>()
     // 点击edit的回显回调
     const editCallback = (item: any) => {
       nextTick(() => {
-        const checks = getMenuChecks(item.menuList);
-        elTreeRef.value?.setCheckedKeys(checks, true);
-      });
-    };
+        const checks = getMenuChecks(item.menuList)
+        elTreeRef.value?.setCheckedKeys(checks, true)
+      })
+    }
     // pageModal的hook
     const [modalInfo, pageModalRef, handleNewData, handleEditData] = usePageModal(
       undefined,
-      editCallback,
-    );
+      editCallback
+    )
     // pageModal的额外参数menuList
-    const otherInfo = ref({});
+    const otherInfo = ref({})
     const handleMenuCheckChange = (data1: any, data2: any) => {
-      const checkedKeys = data2.checkedKeys;
-      const halfCheckedKeys = data2.halfCheckedKeys;
-      const menuList = [...checkedKeys, ...halfCheckedKeys];
-      console.log(menuList);
-      otherInfo.value = { menuList };
-    };
+      const checkedKeys = data2.checkedKeys
+      const halfCheckedKeys = data2.halfCheckedKeys
+      const menuList = [...checkedKeys, ...halfCheckedKeys]
+      console.log(menuList)
+      otherInfo.value = { menuList }
+    }
 
     // 角色选择菜单数据
-    const store = useStore();
-    const roleMenus = computed(() => store.state.entireMenus);
+    const store = useStore()
+    const roleMenus = computed(() => store.state.entireMenus)
 
     return {
       searchFormConfig,
@@ -105,10 +105,10 @@ export default defineComponent({
       roleMenus,
       elTreeRef,
       handleMenuCheckChange,
-      otherInfo,
-    };
-  },
-});
+      otherInfo
+    }
+  }
+})
 </script>
 
 <style scoped lang="less">

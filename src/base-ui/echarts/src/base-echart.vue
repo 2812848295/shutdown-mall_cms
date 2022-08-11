@@ -5,30 +5,30 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, defineProps, withDefaults, watchEffect } from "vue";
-import { useEcharts } from "../hooks/useEcharts";
-import { EChartsOption } from "echarts";
+import { ref, onMounted, defineProps, withDefaults, watchEffect } from 'vue'
+import { useEcharts } from '../hooks/useEcharts'
+import { EChartsOption } from 'echarts'
 
 const props = withDefaults(
   defineProps<{
-    options: EChartsOption;
-    width?: string;
-    height?: string;
+    options: EChartsOption
+    width?: string
+    height?: string
   }>(),
   {
     options: () => ({}),
-    width: "100%",
-    height: "350px",
-  },
-);
+    width: '100%',
+    height: '350px'
+  }
+)
 
-const echartDivRef = ref<HTMLElement>();
+const echartDivRef = ref<HTMLElement>()
 onMounted(() => {
-  const [setOptions] = useEcharts(echartDivRef.value!);
+  const [setOptions] = useEcharts(echartDivRef.value!)
   watchEffect(() => {
-    setOptions(props.options);
-  });
-});
+    setOptions(props.options)
+  })
+})
 </script>
 
 <style scoped>

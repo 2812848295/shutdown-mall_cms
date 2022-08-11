@@ -1,12 +1,12 @@
 export interface IPieEchartData {
-  value: number;
-  name: string;
+  value: number
+  name: string
 }
 
 export interface IEchartXAxisLabel {
-  name: string;
+  name: string
 }
 
 export interface IEchartValueData {
-  value: any;
+  value: any
 }

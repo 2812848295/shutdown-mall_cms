@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunktyp_backstage"]=self["webpackChunktyp_backstage"]||[]).push([[723],{53723:function(n,t,e){e.r(t),e.d(t,{default:function(){return i}});var u=e(66252);const r=(0,u._)("h2",null,"页面加载错误, 请联系管理员~",-1),a=[r];function c(n,t,e,r,c,s){return(0,u.wg)(),(0,u.iD)("div",null,a)}var s=(0,u.aZ)({setup(){return{}}}),l=e(83744);const f=(0,l.Z)(s,[["render",c]]);var i=f}}]);
+//# sourceMappingURL=723.83f97ee0.js.map

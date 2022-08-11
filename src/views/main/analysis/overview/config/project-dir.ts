@@ -251,4 +251,4 @@ export const projectDir = `
 ├── types
 │   └── vuex.d.ts
 └── vue.config.js
-`;
+`
